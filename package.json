@@ -1,0 +1,21 @@
+{
+  "name": "webpack-angularjs-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "ts-loader": "^5.3.2",
+    "typescript": "^3.2.2",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "scripts": {
+    "build": "webpack --mode development",
+    "start": "webpack-dev-server --mode development"
+  },
+  "keywords": [],
+  "author": "Leung Wong",
+  "license": "ISC"
+}
