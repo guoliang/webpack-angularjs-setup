@@ -1,14 +1,18 @@
+// External dependencies
 import * as angular from "angular";
+import uiRouter from "@uirouter/angularjs";
+import { upgradeModule } from "@uirouter/angular-hybrid";
 
 export class AppCtrl {
-    id: number;
+  id: number;
 
-    constructor() { }
+  constructor() {}
 
-    myName(): string {
-        return "Leung";
-    }
+  myName(): string {
+    return "Leung";
+  }
 }
 
-angular.module("appbuilder", [])
-	.controller("AppCtrl", AppCtrl)
+angular
+  .module("appbuilder", [uiRouter, upgradeModule.name])
+  .controller("AppCtrl", AppCtrl);
