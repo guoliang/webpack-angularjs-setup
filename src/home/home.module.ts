@@ -1,2 +1,3 @@
-import * as angular from 'angular';
-export const homeModule = angular.module('main', ['ui.router']);
+import angular from "angular";
+
+export const homeModule = angular.module("home", ["ui.router"]);

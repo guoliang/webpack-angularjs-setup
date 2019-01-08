@@ -1,4 +1,4 @@
-import { homeModule } from './home.module';
+import { homeModule } from "./home.module";
 
 // This is a home component for authenticated users.
 // It shows giant buttons which activate their respective submodules: Messages, Contacts, Preferences
@@ -22,4 +22,4 @@ const homeComponent = {
     </div>
 `};
 
-homeModule.component('home', homeComponent);
+homeModule.component("home", homeComponent);

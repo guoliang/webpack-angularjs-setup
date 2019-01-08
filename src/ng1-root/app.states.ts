@@ -8,6 +8,7 @@ import {
   UrlRouterProvider,
   UrlService
 } from "@uirouter/angularjs";
+import { TestService } from "../ng1-services/test-service";
 
 ng1RootModule.run(($stateRegistry: StateRegistry, $urlService: UrlService) => {
   $urlService.rules.initial({ state: "app" });
@@ -26,6 +27,15 @@ ng1RootModule.run(($stateRegistry: StateRegistry, $urlService: UrlService) => {
   // });
 });
 
+export class TestController {
+  static $inject = ["TestService"];
+
+  public yolo = "Hello Test World";
+  constructor(public testService: TestService) {
+    console.info(testService.getTestStatus());
+  }
+}
+
 const rootState: Ng1StateDeclaration = {
   url: "",
   name: "app",
@@ -34,9 +44,8 @@ const rootState: Ng1StateDeclaration = {
         <a ui-sref=".ng1.ng2" ui-sref-active-eq="active">app.ng1.ng2</a>
         <a ui-sref=".ng2" ui-sref-active-eq="active">app.ng2</a>
         <a ui-sref=".ng2.ng2" ui-sref-active-eq="active">app.ng2.ng2</a>
-
         <ui-view></ui-view>
-      `
+      `,
 };
 
 const homeState: Ng1StateDeclaration = {
@@ -45,8 +54,12 @@ const homeState: Ng1StateDeclaration = {
   template: `
         <h1>Hello World</h1>
         <a ui-sref="app">Back to app</a>
+        <p>Hello {{ testCtrl.yolo }}</p>
+        <p>Hello {{ testCtrl.testService.getTestStatus() }}</p>
         <ui-view></ui-view>
-      `
+      `,
+  controller: TestController,
+  controllerAs: "testCtrl"
 };
 
 ng1RootModule.config([

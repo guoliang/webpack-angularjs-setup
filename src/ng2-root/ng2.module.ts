@@ -2,18 +2,12 @@ import { ng1RootModule } from "../ng1-root/ng1-root.module";
 import { Ng2Component } from "./ng2.component";
 import { Ng2States } from "./ng2.states";
 
+import { getTestService } from "../ng1-services/test-service";
+
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { UpgradeModule } from "@angular/upgrade/static";
 import { UIRouterUpgradeModule } from "@uirouter/angular-hybrid";
-
-// export function getDialogService($injector) {
-//   return $injector.get("DialogService");
-// }
-
-// export function getContactsService($injector) {
-//   return $injector.get("Contacts");
-// }
 
 // The main NgModule for the Angular portion of the hybrid app
 @NgModule({
@@ -28,7 +22,14 @@ import { UIRouterUpgradeModule } from "@uirouter/angular-hybrid";
     // PrefsModule
   ],
   declarations: [Ng2Component],
-  entryComponents: [Ng2Component]
+  entryComponents: [Ng2Component],
+  providers: [
+    {
+      provide: "TestService",
+      deps: ["$injector"],
+      useFactory: getTestService
+    }
+  ]
 })
 export class RootModule {
   constructor(private upgrade: UpgradeModule) {}
